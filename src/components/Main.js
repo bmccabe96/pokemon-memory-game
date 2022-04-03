@@ -6,7 +6,7 @@ const Main = () => {
 
   useEffect(()  => {
     const loadCards = async () => {
-      setPokemons(await fetchPokemons(12));
+      setPokemons(await fetchPokemons(25));
     }
     loadCards();
   }, []);
