@@ -1,10 +1,15 @@
 import React, { useState, useEffect} from "react";
+import { Card } from "./Card";
 
-const PokemonList = () => {
-
+const PokemonList = (props) => {
+  const pokemons = props.pokemons;
 
   return (
-    <div>TEMP</div>
+    <div className="pokemon-list">
+      {pokemons.map(pokemon => {
+        return <Card name={pokemon.name} image={pokemon.image} key={pokemon.id} />
+      })}
+    </div>
   )
 }
 

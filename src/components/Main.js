@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from "react";
+import PokemonList from "./pokemon/PokemonList";
 
 const Main = () => {
 
@@ -28,15 +29,7 @@ const Main = () => {
   }
 
   return (
-    <div>
-      Temp
-      {/* <button>Shuffle</button>
-      <div>
-        {pokemons.map(pokemon => {
-          return <div>{pokemon.name + pokemon.id + pokemon.image}</div>
-        })}
-      </div> */}
-    </div>
+    <PokemonList pokemons={pokemons} />
   )
 }
 

@@ -1,14 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import { capitalizeFirstLetter } from "../../utils";
 
 export const Card = (props) => {
-  // const name = props.name;
-  // const image = props.image;
-  const name = 'bulbasaur';
-  const image = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png';
+  const name = props.name;
+  const image = props.image;
+  // const name = capitalizeFirstLetter('bulbasaur');
+  // const image = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png';
 
   return (
-    <StyledContainer>
+    <StyledContainer className="card">
       <Title>{name}</Title>
       <ImageContainer>
         <img src={image} alt={name + "image"} style={myImgStyle}></img>
@@ -25,6 +26,8 @@ const myImgStyle = {
 const Title = styled.h2`
   color: rgb(83, 6, 6);
   font-weight: 450;
+  margin: 0;
+  padding: 0;
 `
 
 const ImageContainer = styled.div`
