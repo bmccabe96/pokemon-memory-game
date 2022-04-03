@@ -2,23 +2,21 @@ import React, { useState }from "react";
 import styled from "styled-components";
 
 export const Score = (props) => {
-  //const label = props.type === 'current' ? 'Current score: ' : 'Best score: ';
+  const label = props.type === 'current' ? 'Current score: ' : 'Best score: ';
+  const score = props.score;
+  const type = props.type;
 
-  const tempLabel = "Current score: ";
-  const tempScore = 3;
-  const tempType = "best";
-
-  if (tempType === 'current') {
+  if (type === 'current') {
     return (
       <CurrentScoreWrapper>
-        <p>{tempLabel + tempScore}</p>
+        <p>{label + score}</p>
       </CurrentScoreWrapper>
     )
   }
 
   return (
     <BestScoreWrapper>
-      <p>{tempLabel + tempScore}</p>
+      <p>{label + score}</p>
     </BestScoreWrapper>
   )
     

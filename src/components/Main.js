@@ -1,11 +1,14 @@
 import React, { useState, useEffect} from "react";
 import PokemonList from "./pokemon/PokemonList";
+import { Score } from "./Score";
 
 const Main = () => {
 
   const [pokemons, setPokemons] = useState([]);
   const [selectedPokemons, setSelectedPokemons] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+
 
   useEffect(()  => {
     const loadCards = async () => {
@@ -29,7 +32,13 @@ const Main = () => {
   }
 
   return (
-    <PokemonList pokemons={pokemons} />
+    <div className="main-content">
+      <div className="score-row">
+        <Score type="current" score={currentScore}/>
+        <Score type="best" score={bestScore}/>
+      </div>
+      <PokemonList pokemons={pokemons} />
+    </div>
   )
 }
 

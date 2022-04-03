@@ -1,16 +1,24 @@
 html, body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .all-content {
   color: rgb(83, 6, 6);
-  
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-top: 40px;
+  row-gap: 40px;
 }
 
 .card {
@@ -24,4 +32,9 @@ html, body {
   row-gap: 15px;
   margin-left: 10vw;
   margin-right: 10vw;
+}
+
+.score-row {
+  display: flex;
+  justify-content: space-evenly;
 }

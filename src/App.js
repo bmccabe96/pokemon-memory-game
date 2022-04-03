@@ -13,7 +13,6 @@ function App() {
   return (
     <div className="all-content">
       <Header />
-      <Score />
       <Main />
       <Footer />
     </div>
