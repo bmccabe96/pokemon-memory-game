@@ -8,7 +8,7 @@ const Header = () => {
       <div className="header-middle">
         <HorizontalLine color="black" height="15px">
           <Circle size="50px" border="6px">
-            <Circle size="30px" border="4px"></Circle>
+            <Circle size="30px" border="2px"></Circle>
           </Circle>
         </HorizontalLine>
       </div>
