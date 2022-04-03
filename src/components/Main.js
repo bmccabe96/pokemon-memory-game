@@ -3,10 +3,12 @@ import React, { useState, useEffect} from "react";
 const Main = () => {
 
   const [pokemons, setPokemons] = useState([]);
+  const [selectedPokemons, setSelectedPokemons] = useState([]);
+  const [currentScore, setCurrentScore] = useState(0);
 
   useEffect(()  => {
     const loadCards = async () => {
-      setPokemons(await fetchPokemons(25));
+      setPokemons(await fetchPokemons(12));
     }
     loadCards();
   }, []);
@@ -27,11 +29,20 @@ const Main = () => {
 
   return (
     <div>
-      {pokemons.map(pokemon => {
-        return <div>{pokemon.name}</div>
-      })}
+      Temp
+      {/* <button>Shuffle</button>
+      <div>
+        {pokemons.map(pokemon => {
+          return <div>{pokemon.name + pokemon.id + pokemon.image}</div>
+        })}
+      </div> */}
     </div>
   )
 }
 
 export default Main;
+
+//TEST POKEMON FOR CARD:
+//bulbasaur
+//1
+//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png
