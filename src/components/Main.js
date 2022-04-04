@@ -1,7 +1,8 @@
 import React, { useState, useEffect} from "react";
 import PokemonList from "./pokemon/PokemonList";
+import Lose from "./Lose";
 import { Score } from "./Score";
-import { shuffle } from "../utils";
+import { shuffle, sleep } from "../utils";
 
 const Main = () => {
 
@@ -9,6 +10,7 @@ const Main = () => {
   const [selectedPokemons, setSelectedPokemons] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
 
 
   useEffect(()  => {
@@ -18,7 +20,7 @@ const Main = () => {
     loadCards();
   }, []);
 
-  const handleClick = (id, name) => {
+  const handleClick = async (id, name) => {
     let alreadyClicked = false;
     for(let i=0; i<selectedPokemons.length; i++) {
       if(id === selectedPokemons[i].id) {
@@ -29,9 +31,13 @@ const Main = () => {
     if (alreadyClicked) {
       if (currentScore > bestScore) {
         setBestScore(currentScore);
-        setCurrentScore(0);
-        setSelectedPokemons([]);
       }
+      setGameOver(true);
+      console.log("waitiing...");
+      await sleep(2000);
+      setGameOver(false);
+      setCurrentScore(0);
+      setSelectedPokemons([]);
     } else {
       const newSelectedPokemons = [...selectedPokemons, {'id': id, 'name': name}];
       setSelectedPokemons(newSelectedPokemons);
@@ -58,18 +64,14 @@ const Main = () => {
 
   return (
     <div className="main-content">
-      <div className="score-row">
+      <div className={gameOver ? "score-row game-over" : "score-row"}>
         <Score type="current" score={currentScore}/>
         <Score type="best" score={bestScore}/>
       </div>
-      <PokemonList pokemons={pokemons} handleClick={handleClick}/>
+      <PokemonList isGameOver={gameOver} pokemons={pokemons} handleClick={handleClick}/>
+      {gameOver ? <Lose score={currentScore}/> : null}
     </div>
   )
 }
 
 export default Main;
-
-//TEST POKEMON FOR CARD:
-//bulbasaur
-//1
-//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png
