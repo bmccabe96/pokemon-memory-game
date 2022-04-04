@@ -3,13 +3,15 @@ import styled from "styled-components";
 import { capitalizeFirstLetter } from "../../utils";
 
 export const Card = (props) => {
-  const name = props.name;
+  const name = capitalizeFirstLetter(props.name);
   const image = props.image;
+  const id = props.id;
+  const handleClick = props.handleClick;
   // const name = capitalizeFirstLetter('bulbasaur');
   // const image = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png';
 
   return (
-    <StyledContainer className="card">
+    <StyledContainer className="card" onClick={(() => handleClick(id, name))} key={id}>
       <Title>{name}</Title>
       <ImageContainer>
         <img src={image} alt={name + "image"} style={myImgStyle}></img>

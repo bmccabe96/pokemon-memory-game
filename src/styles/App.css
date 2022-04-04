@@ -19,6 +19,7 @@ html, body {
   height: 100%;
   margin-top: 40px;
   row-gap: 40px;
+  overflow-y: overlay;
 }
 
 .card {
@@ -28,8 +29,8 @@ html, body {
 .pokemon-list {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 40px;
-  row-gap: 15px;
+  column-gap: 45px;
+  row-gap: 25px;
   margin-left: 10vw;
   margin-right: 10vw;
 }

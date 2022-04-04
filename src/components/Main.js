@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import PokemonList from "./pokemon/PokemonList";
 import { Score } from "./Score";
+import { shuffle } from "../utils";
 
 const Main = () => {
 
@@ -17,6 +18,30 @@ const Main = () => {
     loadCards();
   }, []);
 
+  const handleClick = (id, name) => {
+    let alreadyClicked = false;
+    for(let i=0; i<selectedPokemons.length; i++) {
+      if(id === selectedPokemons[i].id) {
+        alreadyClicked = true;
+      }
+    }
+
+    if (alreadyClicked) {
+      if (currentScore > bestScore) {
+        setBestScore(currentScore);
+        setCurrentScore(0);
+        setSelectedPokemons([]);
+      }
+    } else {
+      const newSelectedPokemons = [...selectedPokemons, {'id': id, 'name': name}];
+      setSelectedPokemons(newSelectedPokemons);
+      setCurrentScore(currentScore + 1);
+    }
+    const copyOfPokemons = shuffle([...pokemons]);
+    setPokemons(copyOfPokemons);
+
+  }
+
   const fetchPokemons = async (n) => {
     let pokemons = [];
     for (let i=1; i<=n; i++) {
@@ -28,7 +53,7 @@ const Main = () => {
       const image = pokemon.sprites.front_default;
       pokemons.push({ id, name, image, });
     }
-    return pokemons;
+    return shuffle(pokemons);
   }
 
   return (
@@ -37,7 +62,7 @@ const Main = () => {
         <Score type="current" score={currentScore}/>
         <Score type="best" score={bestScore}/>
       </div>
-      <PokemonList pokemons={pokemons} />
+      <PokemonList pokemons={pokemons} handleClick={handleClick}/>
     </div>
   )
 }
