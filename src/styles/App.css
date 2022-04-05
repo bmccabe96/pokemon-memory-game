@@ -18,9 +18,10 @@ html, body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin-top: 40px;
+  padding-top: 25px;
   row-gap: 40px;
   overflow-y: overlay;
+  padding-bottom: 15px;
 }
 
 .card {
@@ -30,10 +31,10 @@ html, body {
 .pokemon-list {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 45px;
+  column-gap: 25px;
   row-gap: 25px;
-  margin-left: 10vw;
-  margin-right: 10vw;
+  margin-left: 6vw;
+  margin-right: 6vw;
 }
 
 .score-row {
